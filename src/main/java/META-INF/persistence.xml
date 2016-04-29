@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="siesau">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<!-- não esquecer de colocar aqui as classes de modelo <class></class> -->
+		<class>br.estacio.siesau.entity.Cargo</class>
+		<class>br.estacio.siesau.entity.Cid10Capitulo</class>
+		<class>br.estacio.siesau.entity.Cid10Categ</class>
+		<class>br.estacio.siesau.entity.Cid10Grupo</class>
+		<class>br.estacio.siesau.entity.Cid10Subcateg</class>
+		<class>br.estacio.siesau.entity.CidOCateg</class>
+		<class>br.estacio.siesau.entity.CidOGrupo</class>
+		<class>br.estacio.siesau.entity.Consulta</class>
+		<class>br.estacio.siesau.entity.ConsultaPK</class>
+		<class>br.estacio.siesau.entity.Doenca</class>
+		<class>br.estacio.siesau.entity.Especialidade</class>
+		<class>br.estacio.siesau.entity.EstMedic</class>
+		<class>br.estacio.siesau.entity.EstMedicPK</class>
+		<class>br.estacio.siesau.entity.Exame</class>
+		<class>br.estacio.siesau.entity.Fabricante</class>
+		<class>br.estacio.siesau.entity.Fornecedor</class>
+		<class>br.estacio.siesau.entity.Funcionario</class>
+		<class>br.estacio.siesau.entity.Laudo</class>
+		<class>br.estacio.siesau.entity.LocalEstoque</class>
+		<class>br.estacio.siesau.entity.Medicamento</class>
+		<class>br.estacio.siesau.entity.PacienteProntuario</class>
+		<class>br.estacio.siesau.entity.PacienteProntuarioPK</class>
+		<class>br.estacio.siesau.entity.Receita</class>
+		<class>br.estacio.siesau.entity.SecretariaSaude</class>
+		<class>br.estacio.siesau.entity.TipoAdmini</class>
+		<class>br.estacio.siesau.entity.TipoExame</class>
+		<class>br.estacio.siesau.entity.TipoFuncionario</class>
+		<class>br.estacio.siesau.entity.UnidadeSaude</class>
+
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/siesau" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="postgres" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="org.hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
+
+
+			<!-- obs não esquecer de testar o dialeto do hibernate spatial -->
+			<!-- <property name="hibernate.dialect" value="org.hibernate.spatial.dialect.postgis.PostgisDialect"/> -->
+		</properties>
+	</persistence-unit>
+</persistence>

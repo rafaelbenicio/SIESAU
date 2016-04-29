@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+
+<p:menubar>
+        <p:submenu label="Cadastros" icon="ui-icon-document">            
+            <p:menuitem value="Médicos " url="cadastroMedicos.jsf" />
+            <p:separator />
+            <p:menuitem value="Funcionario" url="sistema.jsf" />
+        </p:submenu>
+ 		
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton type="button" value="Login" icon="ui-icon-extlink" onclick="PF('login').show();" />
+        </f:facet>
+    </p:menubar>
+
+<div style="position:relative;;margin-left:120px;font-size:14px;">
+	<p:panel header="Cadastro de Unidades de Saúde" style="position:relative; width:900px;background-color:#E8E8E8;color:black;">
+		<h:form id="form1">
+			<p:panelGrid columns="2">
+				<h:outputText value="Nome da Unidade de Saúde" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+				
+				<h:outputText value="Especialidades" />
+				<p:inputTextarea value="#{mbUnidadeDeSaude}" required="true" />
+
+				<h:outputText value="CNPJ" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+
+				<h:outputText value="Localidade" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+
+				<h:outputText value="Logradouro" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+				
+				<h:outputText value="Complemento" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+
+				<h:outputText value="Bairro" />
+				<p:inputText value="#{mbUnidadeDeSaude}" />				
+				
+				<h:outputText value="Telefone" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+
+				<h:outputText value="Email" />
+				<p:inputText value="#{mbUnidadeDeSaude}" required="true" />
+				<!--Rafael_p_Ferreira-->
+			</p:panelGrid>
+			<p:commandButton value="Gravar Unidade de Sáude"
+					action="#{mbUn.gravarUnidadeDeSaude}" ajax="true" update=":form1,:form2:tabela" ></p:commandButton>
+				<p:growl></p:growl>
+		</h:form>
+	</p:panel>
+
+	<p:panel header="Consulta de Dados">
+
+		<h:form id="form2">
+
+			<p:dataTable id="tabela" value="#{mbUnidadesDeSaude}"
+				reflow="true" var="linha" rowIndexVar="num" editable="true">
+
+				<f:facet name="header">Lista de Médicos</f:facet>
+
+				<p:ajax event="rowEdit" listener="#{mbUn.editarLinha}"
+					update=":form2:msg" />
+
+				<p:column headerText="idUnidadeDeSaude">
+					<h:outputText value="#{linha.idUnidadeDeSaude}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{linha.nomeUnidadeDeSaude}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{linha.nomeUnidadeDeSaude}" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="CNPJ">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{linha.cnpj}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{linha.cnpj}" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				
+
+				<p:column headerText="Exclusão" width="30"
+					styleClass="text-align:center">
+					<p:commandButton action="#{mbUn.excluirUnidadeDeSaude}"
+						update=":form2,:form2:tabela" process="@this" icon="ui-icon-trash"
+						ajax="true">
+						<f:setPropertyActionListener value="#{linha}"
+							target="#{mbUn.unidadeDeSaude}"></f:setPropertyActionListener>
+						<p:confirm icon="ui-icon-alert" message="Deseja Excluir ?"
+							header="Confirma?" />
+					</p:commandButton>
+				</p:column>
+
+
+				<p:column width="50" headerText="Edição">
+					<p:rowEditor></p:rowEditor>
+				</p:column>
+
+			</p:dataTable>
+
+			<p:confirmDialog appendTo="@(body)" global="true">
+				<p:commandButton process="@this" value="sim"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check"></p:commandButton>
+				<p:commandButton process="@this" value="Nao"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close"></p:commandButton>
+			</p:confirmDialog>
+
+
+			<p:growl id="msg" />
+
+		</h:form>
+	</p:panel>
+</div>
+</h:body>
+</html>

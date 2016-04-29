@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body style="margin:0px; border:0; background-color:#E8E8E8;">
+
+<ui:insert name="header">
+<ui:include src="/header.xhtml"/>
+
+</ui:insert>
+
+<ui:insert name="menu">
+	<ui:include src="/menu.xhtml"/>
+</ui:insert>
+
+<div style="position:relative;max-width:1120px;margin-right:auto; margin-left:auto;font-size:14px;">
+
+<h:form id="form">
+             
+    <p:growl id="msgs" showDetail="true" />
+ 
+    
+    <p:tabView style="position:relative; width:900px;background-color:#E8E8E8;">
+        <p:tab title="Cadastro" style="position:relative;">
+
+<p:fieldset legend="Cadastro de Medicos" style="position:relative;background-color:#E8E8E8;color:black;width:400px;">
+<!--Rafael_p_Ferreira-->
+
+<h:form>
+    <h:panelGrid columns="4" cellpadding="3">
+        <h:panelGrid columns="4" cellpadding="3">
+        
+        <p:outputLabel for="name" value="Nome: " />
+        <p:inputMask id="name" value="#{maskView.name}" mask=""/>
+        
+        <h:outputText value="Sobrenome: " />
+        <p:inputText value="#{mbUn.cadastroPaciente.Sobrenome}" required="true" />
+        
+        <h:outputText value="CPF: " />
+        <p:inputText value="#{mbUn.cadastroPaciente.CPF}" required="true" />
+        
+        <h:outputText value="RG: " />
+        <p:inputText value="#{mbUn.cadastroPaciente.RG}" required="true" />
+        
+        <p:outputLabel for="date" value="Data de Nascimento: " />
+        <p:inputMask id="date" value="#{maskView.date}" mask="99/99/9999"/>
+ 		
+        <h:outputText value="Logradouro: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.Logradouro}" required="true" />
+		
+		<h:outputText value="Bairro: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.Bairro}" required="true" />
+        
+        <h:outputText value="Cidade: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.Cidade}" required="true" />
+		
+		<h:outputText value="Complemento: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.Complemento}" required="true" />
+        
+        <p:outputLabel for="phone" value="Telefone:" />
+        <p:inputMask id="phone" value="#{maskView.phone}" mask="(99) 99999-9999"/>
+        
+        <h:outputText value="Naturalidade: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.Naturalidade}" required="true" />
+		
+		<h:outputText value="Grau de instrucao: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.instrucao}" required="true" />
+		
+		<h:outputText value="Profissao: " />
+		<p:inputText value="#{mbUn.cadastroPaciente.Profissao}" required="true" />
+        
+        <h:outputText value="Data de entrada: " />
+        <p:inputMask value="#{maskView.date}" mask="99/99/9999"/>
+        
+        <h:outputText value="Previsao de Alta: " />
+        <p:inputMask value="#{maskView.date}" mask="99/99/9999"/>
+        
+        <h:form>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+        <p:outputLabel for="basic" value="Genero:" /><td></td>
+        <p:selectOneListbox id="basic" value="#{selectOneView.option}">
+            <f:selectItem itemLabel="Masculino" itemValue="1" />
+            <f:selectItem itemLabel="Feminino" itemValue="2" />
+        </p:selectOneListbox>
+        </h:panelGrid>
+        </h:form>
+        
+        <h:form>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+        <p:outputLabel for="basic" value="Estado Civil:" /><td></td>
+        <p:selectOneListbox id="basic" value="#{selectOneView.option}">
+            <f:selectItem itemLabel="Solteiro(a)" itemValue="1" />
+            <f:selectItem itemLabel="Casado(a)" itemValue="2" />
+            <f:selectItem itemLabel="Viuvo(a)" itemValue="3" />
+        </p:selectOneListbox>
+        </h:panelGrid>
+        </h:form>
+       
+       <!--Rafael_p_Ferreira-->
+        
+    </h:panelGrid>
+ 
+ 		<h:form>        
+    	<h:panelGrid columns="2" cellpadding="2">
+        <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo" />
+        <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
+        <p:outputPanel id="photo">
+            <p:graphicImage name="demo/images/photocam/#{photoCamView.filename}.jpeg" rendered="#{not empty photoCamView.filename}"/>
+        </p:outputPanel>
+    	</h:panelGrid>
+		</h:form>
+ 		
+ 		
+    <tr><h:outputText value="Observacoes: " /></tr>
+    		<tr><p:inputTextarea rows="10" cols="115" completeMethod="#{inputTextareaView.completeArea}" queryDelay="250" minQueryLength="4" />
+			</tr>
+    
+    
+    </h:panelGrid>
+    
+</h:form>
+
+				<h:form>
+    			<p:growl id="growl" life="2000" />
+     			<p:commandButton value="Limpar" id="ajax" update="growl" actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+     			<p:commandButton value="Salvar" />
+    			</h:form>
+</p:fieldset>
+</p:tab>
+<p:tab title="Consulta">
+	<h:form>
+    <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+ 
+        <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="cars" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/csv.png" width="24"/>
+                <p:dataExporter type="csv" target="tbl" fileName="cars" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                <p:dataExporter type="xml" target="tbl" fileName="cars" />
+            </h:commandLink>
+        </f:facet>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Codigo" />
+            </f:facet>
+            <h:outputText value="#{car.id}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Nome"/>
+            </f:facet>
+            <h:outputText value="#{car.year}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="CRM" />
+            </f:facet>
+            <h:outputText value="#{car.brand}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Edição" />
+            </f:facet>
+            <h:outputText value="#{car.color}" />
+        </p:column>
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Exclusão" />
+            </f:facet>
+            <h:outputText value="#{car.color}" />
+        </p:column>
+    </p:dataTable>
+ 
+    <h3>Export Page Data Only</h3>
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/excel.png" />
+        <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/pdf.png" />
+        <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/csv.png" />
+        <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/xml.png" />
+        <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+</h:form>
+	</p:tab>
+</p:tabView>
+</h:form>
+</div>
+
+<ui:insert name="footer">
+	<ui:include src="/footer.xhtml"/>
+</ui:insert>
+</h:body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body style="margin:0px; border:0; background-color:#E8E8E8;">
+<ui:insert name="header">
+<ui:include src="/header.xhtml"/>
+
+</ui:insert>
+
+<ui:insert name="menu">
+	<ui:include src="/menu.xhtml"/>
+</ui:insert>
+<div style="position:relative;max-width:1120px;margin-right:auto; margin-left:auto;font-size:14px;">
+	<h:form id="form">
+             
+    <p:growl id="msgs" showDetail="true" />
+ 
+    
+    <p:tabView style="position:relative; width:1112px;background-color:#E8E8E8;">
+        <p:tab title="Cadastro" style="position:relative;">
+				<p:fieldset legend="Cadastro de Funcionário" style="position:relative;background-color:#E8E8E8;color:black;width:400px;">
+				    
+				    <h:panelGrid columns="3" layout="grid">
+				    <p:row>
+				    <h:outputText value="Nome:" style="padding:20px;" /><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" required="true" /></p:column>
+					</p:row>
+					
+					
+					<p:row>
+					<h:outputText value="ID:" style="padding:20px;" /><br/>
+					<p:inputText value="#{mbFuncionario}" required="true" />
+					</p:row>
+
+
+
+					<p:row>
+					<h:outputText value="Usuário:" style=" padding:20px;" /><br/>
+					<p:column><p:password value="#{mbFuncionario}"
+					required="true" /></p:column>			
+					</p:row>
+					
+					
+					<p:row>					
+					<h:outputText value="Senha:" style=" padding:20px; " /><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" required="true"  /></p:column>
+					</p:row>
+
+
+
+					<p:row>
+					<h:outputText value="Sexo:" style=" padding:20px;" /><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" required="true" /></p:column>
+					</p:row>
+
+					
+					<p:row>
+					<h:outputText value="Estado Civil:" style=" padding:20px;"/><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" /></p:column>
+					</p:row>
+					
+					
+					
+					<p:row>
+					<h:outputText value="CPF:" style=" padding:20px;" /><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" required="true" /></p:column>
+					</p:row>
+
+					
+					<p:row>
+					<h:outputText value="RG:" style=" padding:20px;"/><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" /></p:column>
+					</p:row>
+					
+					<p:row>
+					<h:outputText value="Cargo:" style=" padding:20px;"/><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" /></p:column>
+					</p:row>
+					
+					<p:row>
+					<h:outputText value="Telefone:" style=" padding:20px;"/><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" /></p:column>
+					</p:row>
+					
+					<p:row>
+					<h:outputText value="Endereço:" style=" padding:20px;"/><br/>
+					<p:column><p:inputText value="#{mbFuncionario}" /></p:column>
+					</p:row>
+					
+					</h:panelGrid>
+				<br/>
+					<p:commandButton value="Salvar" style="float:right" action="#" ajax="true" update=":form" />
+					<p:commandButton value="Limpar" style="float:right" action="#" ajax="true" update=":form" />
+	
+</p:fieldset>
+</p:tab>
+			
+<p:tab title="Consulta">
+	<h:form>
+    <p:dataTable id="tbl" var="car" value="#{mbFuncionario}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+ 
+        <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="cars" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/csv.png" width="24"/>
+                <p:dataExporter type="csv" target="tbl" fileName="cars" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                <p:dataExporter type="xml" target="tbl" fileName="cars" />
+            </h:commandLink>
+        </f:facet>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Nome" />
+            </f:facet>
+            <h:outputText value="#{mbFuncionario}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="ID"/>
+            </f:facet>
+            <h:outputText value="#{mbFuncionario}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Usuário" />
+            </f:facet>
+            <h:outputText value="#{mbFuncionario}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Edição" />
+            </f:facet>
+            <h:outputText value="#{mbFuncionario}" />
+        </p:column>
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Exclusão" />
+            </f:facet>
+            <h:outputText value="#{mbFuncionario}" />
+        </p:column>
+    </p:dataTable>
+ 
+    <h3>Export Page Data Only</h3>
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/excel.png" />
+        <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/pdf.png" />
+        <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/csv.png" />
+        <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/xml.png" />
+        <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+</h:form>
+	</p:tab>
+	</p:tabView>
+	</h:form>
+	
+</div>
+<ui:insert name="footer">
+	<ui:include src="/footer.xhtml"/>
+</ui:insert>
+</h:body>
+</html>

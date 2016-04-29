@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<link rel="stylesheet" type="text/css"  href="estilo.css"/>
+</h:head>
+<h:body>
+
+<h:form>
+<ui:composition>
+<div style="background-color:#4A708B;max-width: 1120px;height:40px;positon:relative;margin-right:auto; margin-left:auto;">
+<section style="">
+<h:form>  
+    <p:growl id="messages"/>
+    
+ 	
+    <p:menubar style="background-color:#4A708B;font-size:14px;">
+        <p:menuitem  icon="ui-icon-home" url="index.xhtml">
+        </p:menuitem>
+ 
+        <p:submenu label="Cadastroo" icon="ui-icon-pencil">
+            <p:menuitem value="Paciente" url="cadastroPaciente.xhtml" icon="" />
+            <p:menuitem value="Medico" url="cadastroMedicos.xhtml" icon="" />
+            <p:menuitem value="Funcionario" url="cadastroFuncionario.xhtml" icon="" />
+            <p:menuitem value="Fornecedor" url="cadastroFornecedor.xhtml" icon="" />
+        </p:submenu>
+        
+        <p:submenu label="Médico" icon="ui-icon-note">
+            <p:menuitem value="Prontuário" url="cadastroProntuario.xhtml" icon="" />
+            <p:menuitem value="Laudo" url="laudo.xhtml" icon="" />
+            <p:menuitem value="Receita" url="receita.xhtml" icon="" />
+            <p:menuitem value="Exames" url="exameComplementar.xhtml" icon="" />
+            
+        </p:submenu>
+        <p:submenu label="Unidades de Saude" icon="ui-icon-calculator">
+        <p:menuitem value="Cadastro" url="unidadeSaude.xhtml" icon="" />
+        </p:submenu>
+        
+        <p:submenu label="Medicamentos" icon="ui-icon-document">
+            <p:menuitem value="Requerimento" url="cadastroMedicamentos.xhtml" icon="" />
+            <p:menuitem value="Estoque" url="" icon="" />
+        </p:submenu>
+        
+        <p:menuitem value="Importação" icon="ui-icon-arrowthickstop-1-n">
+        </p:menuitem>
+        
+        <p:submenu label="Observatorio" icon="ui-icon-search">
+        <p:menuitem value="Mapa de Doenças" url="geoLocal.xhtml" icon="" />
+        <p:menuitem value="Relatorio" url="relatorio.xhtml" icon="" />
+        </p:submenu>
+ 
+		<f:facet name="options">
+            <p:inputText style="font-size:16px;" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+        </f:facet> 
+       
+    </p:menubar>
+    
+    
+</h:form>
+ 
+</section>
+ </div>
+        
+</ui:composition>
+</h:form>
+</h:body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body style="margin:0px; border:0; background-color:#E8E8E8;">
+<ui:insert name="header">
+<ui:include src="/header.xhtml"/>
+
+</ui:insert>
+
+<ui:insert name="menu">
+	<ui:include src="/menu.xhtml"/>
+</ui:insert>
+
+<div style="position:relative;max-width:1120px;margin-right:auto; margin-left:auto;font-size:14px;">
+   
+	<p:fieldset legend="Unidade de Saude" style="position:relative;background-color:#E8E8E8;color:black;width:400px;">
+				<h:form id="form1" style=" position: relative;width:800px;">
+				    
+				 <h:panelGrid columns="3" layout="grid" style="padding:10px;"> 
+				 	<p:row>
+				    <h:outputText value="Unidade de Saude:" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column><br/>
+					
+					<h:outputText value="CNPJ" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column>
+					</p:row>
+					
+					<p:row>
+					<h:outputText value="Telefone:" style="padding:;" /><br/>
+					<p:column><p:inputMask id="phone" value="#{maskView.phone}" mask="(999) 999-9999"/></p:column><br/>
+					
+					<h:outputText value="Logradouro" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column>
+					</p:row>
+					
+					<p:row>
+					<h:outputText value="Numero" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column><br/>
+					
+					<h:outputText value="Complemento" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column>
+					</p:row>
+					
+					<p:row>
+					<h:outputText value="Bairro:" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column><br/>
+					</p:row>
+					<p:row>
+					<h:outputText value="Cidade:" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column><br/>
+					</p:row>
+					<p:row>
+					<h:outputText value="Email:" style="padding:;" /><br/>
+					<p:column><p:inputText value="" required="true" /></p:column>
+					</p:row>
+    				
+				</h:panelGrid>
+			
+				
+					
+				
+				<br/><br/><br/>
+					<p:commandButton value="Salvar" style="float:right"
+					action="#" ajax="true" update=":form1" />
+				
+					<p:commandButton value="Limpar" style="float:right"
+					action="#" ajax="true" update=":form1" />
+					
+					
+				</h:form>
+				
+	</p:fieldset>
+</div>
+
+<ui:insert name="footer">
+	<ui:include src="/footer.xhtml"/>
+</ui:insert>
+</h:body>
+</html>
